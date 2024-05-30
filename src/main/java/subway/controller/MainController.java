@@ -1,26 +1,28 @@
-package subway.service;
+package subway.controller;
 
 import subway.command.MainCommand;
 import subway.view.InputView;
 import subway.view.OutputView;
 
-public class MainService {
+public class MainController {
 
     public static void run() {
         OutputView.printMain();
         try {
-            MainCommand mainCommand = InputView.readMainCommand();
+            String readMainCommand = InputView.readMainCommand();
+            MainCommand mainCommand = MainCommand.getMainCommandType(readMainCommand);
             mainCommand.execute();
         } catch (Exception e) {
             OutputView.printError(e.getMessage());
-            MainService.run();
+            MainController.run();
         }
     }
 
     public static void stationManagement() {
-        StationService.run();
+        StationController.run();
     }
 
     public static void quit() {
     }
+
 }

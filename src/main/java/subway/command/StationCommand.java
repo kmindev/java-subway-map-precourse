@@ -1,12 +1,12 @@
 package subway.command;
 
-import subway.service.StationService;
+import subway.controller.StationController;
 
 public enum StationCommand {
-    ADD_STATION("1", "1. 역 등록", StationService::addStation),
-    DELETE_STATION("2", "2. 역 삭제", StationService::deleteStation),
-    SELECT_STATION("3", "3. 역 조회", StationService::selectStation),
-    BACK("B", "B. 돌아가기", StationService::back);
+    ADD_STATION("1", "1. 역 등록", StationController::addStation),
+    DELETE_STATION("2", "2. 역 삭제", StationController::deleteStation),
+    SELECT_STATION("3", "3. 역 조회", StationController::selectStation),
+    BACK("B", "B. 돌아가기", StationController::back);
 
     private static final String ERROR_MESSAGE = "지원하지 않는 기능입니다.";
 

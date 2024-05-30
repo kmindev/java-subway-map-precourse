@@ -1,9 +1,9 @@
 package subway;
 
-import subway.service.MainService;
+import subway.controller.MainController;
 
 public class Application {
     public static void main(String[] args) {
-        MainService.run();
+        MainController.run();
     }
 }

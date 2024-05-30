@@ -1,10 +1,10 @@
 package subway.command;
 
-import subway.service.MainService;
+import subway.controller.MainController;
 
 public enum MainCommand {
-    STATION_MANAGEMENT("1", "1. 역 관리", MainService::stationManagement),
-    QUIT("Q", "Q. 종료", MainService::quit);
+    STATION_MANAGEMENT("1", "1. 역 관리", MainController::stationManagement),
+    QUIT("Q", "Q. 종료", MainController::quit);
 
     private static final String ERROR_MESSAGE = "지원하지 않는 기능입니다.";
 

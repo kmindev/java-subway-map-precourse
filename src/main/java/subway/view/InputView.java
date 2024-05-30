@@ -1,9 +1,5 @@
 package subway.view;
 
-import subway.command.MainCommand;
-import subway.command.StationCommand;
-import subway.domain.Station;
-
 import java.util.Scanner;
 
 public class InputView {
@@ -13,36 +9,36 @@ public class InputView {
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static MainCommand readMainCommand() {
+    public static String readMainCommand() {
         System.out.println(SELECT_COMMAND_PROMPT);
         String command = scanner.next();
         System.out.println();
 
-        return MainCommand.getMainCommandType(command);
+        return command;
     }
 
-    public static StationCommand readStationManagementCommand() {
+    public static String readStationManagementCommand() {
         System.out.println(SELECT_COMMAND_PROMPT);
         String command = scanner.next();
         System.out.println();
 
-        return StationCommand.getStationCommandType(command);
+        return command;
     }
 
-    public static Station readAddStationName() {
+    public static String readAddStationName() {
         System.out.println(ENTER_ADD_STATION_NAME_PROMPT);
         String stationName = scanner.next();
         System.out.println();
 
-        return Station.from(stationName);
+        return stationName;
     }
 
-    public static Station readDeleteStationName() {
+    public static String readDeleteStationName() {
         System.out.println(ENTER_DELETE_STATION_NAME_PROMPT);
         String stationName = scanner.next();
         System.out.println();
 
-        return Station.from(stationName);
+        return stationName;
     }
 
 }
