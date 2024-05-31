@@ -4,6 +4,7 @@ import subway.controller.MainController;
 
 public enum MainCommand {
     STATION_MANAGEMENT("1", "1. 역 관리", MainController::stationManagement),
+    LINE_MANAGEMENT("2", "2. 노선 관리", MainController::lineManagement),
     QUIT("Q", "Q. 종료", MainController::quit);
 
     private static final String ERROR_MESSAGE = "지원하지 않는 기능입니다.";
@@ -34,4 +35,5 @@ public enum MainCommand {
     public void execute() {
         action.run();
     }
+
 }

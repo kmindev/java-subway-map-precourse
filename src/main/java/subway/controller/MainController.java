@@ -22,6 +22,10 @@ public class MainController {
         StationController.run();
     }
 
+    public static void lineManagement() {
+        LineController.run();
+    }
+
     public static void quit() {
     }
 
