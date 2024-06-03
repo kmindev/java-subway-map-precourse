@@ -32,4 +32,11 @@ public class Line {
         return Objects.hashCode(name);
     }
 
+    @Override
+    public String toString() {
+        return "Line{" +
+                "name='" + name + '\'' +
+                '}';
+    }
+
 }

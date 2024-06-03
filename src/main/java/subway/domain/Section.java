@@ -24,4 +24,11 @@ public class Section {
     public int hashCode() {
         return Objects.hashCode(line);
     }
+    @Override
+    public String toString() {
+        return "Section{" +
+                "line=" + line +
+                ", stations=" + stations +
+                '}';
+    }
 }
