@@ -2,10 +2,14 @@ package subway.controller;
 
 import subway.command.SectionCommand;
 import subway.domain.Line;
+import subway.domain.Section;
 import subway.domain.Station;
 import subway.service.SectionService;
 import subway.view.InputView;
 import subway.view.OutputView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SectionController {
     private static final String ADD_SECTION_SUCCESS_MESSAGE = "구간이 등록되었습니다.";
@@ -56,4 +60,18 @@ public class SectionController {
         MainController.run();
     }
 
+    public static void printLines() {
+        List<Section> sections = SectionService.findAll();
+        List<String> printLines = new ArrayList<>();
+
+        for (Section section : sections) {
+            printLines.add(section.getLine().getName());
+            printLines.add("---");
+            for (Station station : section.getStations()) {
+                printLines.add(station.getName());
+            }
+        }
+
+        OutputView.printInfo(printLines);
+    }
 }

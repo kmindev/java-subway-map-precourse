@@ -30,6 +30,10 @@ public class MainController {
         SectionController.run();
     }
 
+    public static void printLines() {
+        SectionController.printLines();
+    }
+
     public static void quit() {
     }
 }

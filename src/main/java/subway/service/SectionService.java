@@ -2,6 +2,8 @@ package subway.service;
 
 import subway.domain.*;
 
+import java.util.List;
+
 public class SectionService {
     private static final String LINE_NOT_FOUND_ERROR = "해당 노선을  찾을 수 없습니다.";
     private static final String STATION_NOT_FOUND_ERROR = "해당역을 찾을 수 없습니다.";
@@ -24,6 +26,10 @@ public class SectionService {
                 .orElseThrow(() -> new IllegalArgumentException(LINE_NOT_FOUND_ERROR));
 
         SectionRepository.deleteSection(findLine, findStation);
+    }
+
+    public static List<Section> findAll() {
+        return SectionRepository.sections();
     }
 
 }
