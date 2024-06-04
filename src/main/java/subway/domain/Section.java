@@ -1,5 +1,6 @@
 package subway.domain;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -13,12 +14,16 @@ public class Section {
         this.stations = stations;
     }
 
+    public Line getLine() {
+        return this.line;
+    }
+
     public List<Station> getStations() {
         return this.stations;
     }
 
     public static Section of(Line line, Station downStation, Station upStation) {
-        return new Section(line, Arrays.asList(downStation, upStation));
+        return new Section(line, new ArrayList<>(Arrays.asList(downStation, upStation)));
     }
 
     @Override
