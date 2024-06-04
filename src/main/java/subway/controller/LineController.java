@@ -18,7 +18,7 @@ public class LineController {
         OutputView.printLineManagement();
         try {
             String readLineCommand = InputView.readLineManagementCommand();
-            LineCommand lineCommand = LineCommand.getStationCommandType(readLineCommand);
+            LineCommand lineCommand = LineCommand.getLineCommandType(readLineCommand);
 
             lineCommand.execute();
         } catch (Exception e) {

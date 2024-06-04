@@ -25,7 +25,7 @@ public enum LineCommand {
         return description;
     }
 
-    public static LineCommand getStationCommandType(String command) {
+    public static LineCommand getLineCommandType(String command) {
         for (LineCommand lineCommand : LineCommand.values()) {
             if (command.equals(lineCommand.command)) {
                 return lineCommand;
