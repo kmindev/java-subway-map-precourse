@@ -1,5 +1,6 @@
 package subway.domain;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,6 +11,14 @@ public class Section {
     private Section(Line line, List<Station> stations) {
         this.line = line;
         this.stations = stations;
+    }
+
+    public List<Station> getStations() {
+        return this.stations;
+    }
+
+    public static Section of(Line line, Station downStation, Station upStation) {
+        return new Section(line, Arrays.asList(downStation, upStation));
     }
 
     @Override
@@ -24,6 +33,7 @@ public class Section {
     public int hashCode() {
         return Objects.hashCode(line);
     }
+
     @Override
     public String toString() {
         return "Section{" +
