@@ -1,19 +1,19 @@
 package subway.controller;
 
 import subway.command.MainCommand;
-import subway.view.InputView;
-import subway.view.OutputView;
+import subway.view.output.MainOutPutView;
+import subway.view.input.MainInputView;
 
 public class MainController {
 
     public static void run() {
-        OutputView.printMain();
+        MainOutPutView.printMain();
         try {
-            String readMainCommand = InputView.readMainCommand();
+            String readMainCommand = MainInputView.readMainCommand();
             MainCommand mainCommand = MainCommand.getMainCommandType(readMainCommand);
             mainCommand.execute();
         } catch (Exception e) {
-            OutputView.printError(e.getMessage());
+            MainOutPutView.printError(e.getMessage());
             MainController.run();
         }
     }
@@ -36,4 +36,5 @@ public class MainController {
 
     public static void quit() {
     }
+
 }
