@@ -1,9 +1,6 @@
 package subway.domain;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class LineRepository {
 
@@ -22,4 +19,10 @@ public class LineRepository {
         return lines.removeIf(line -> Objects.equals(line.getName(), name));
     }
 
+    public static Optional<Line> findById(Line line) {
+        return lines().stream()
+                .filter(item -> item.equals(line))
+                .findFirst();
+    }
+    
 }

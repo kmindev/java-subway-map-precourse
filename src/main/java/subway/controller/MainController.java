@@ -26,7 +26,10 @@ public class MainController {
         LineController.run();
     }
 
-    public static void quit() {
+    public static void sectionManagement() {
+        SectionController.run();
     }
 
+    public static void quit() {
+    }
 }

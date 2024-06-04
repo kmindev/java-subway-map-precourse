@@ -2,6 +2,7 @@ package subway.view;
 
 import subway.command.LineCommand;
 import subway.command.MainCommand;
+import subway.command.SectionCommand;
 import subway.command.StationCommand;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class OutputView {
     private static final String MAIN_TITLE = "## 메인화면";
     private static final String STATION_MANAGEMENT_TITLE = "## 역 관리 화면";
     private static final String LINE_MANAGEMENT_TITLE = "## 노선 관리 화면";
+    private static final String SECTION_MANAGEMENT_TITLE = "## 구간 관리 화면";
     private static final String INFO_FORMAT = "[INFO] ";
     private static final String ERROR_FORMAT = "[ERROR] ";
 
@@ -41,6 +43,17 @@ public class OutputView {
 
         for (LineCommand lineCommand : LineCommand.values()) {
             out.append(lineCommand.getDescription()).append("\n");
+        }
+
+        System.out.println(out);
+    }
+
+    // Section
+    public static void printSectionManagement() {
+        StringBuilder out = new StringBuilder(SECTION_MANAGEMENT_TITLE).append("\n");
+
+        for (SectionCommand sectionCommand : SectionCommand.values()) {
+            out.append(sectionCommand.getDescription()).append("\n");
         }
 
         System.out.println(out);
