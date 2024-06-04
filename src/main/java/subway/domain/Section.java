@@ -22,8 +22,8 @@ public class Section {
         return this.stations;
     }
 
-    public static Section of(Line line, Station downStation, Station upStation) {
-        return new Section(line, new ArrayList<>(Arrays.asList(downStation, upStation)));
+    public static Section of(Line line, Station... stations) {
+        return new Section(line, new ArrayList<>(Arrays.asList(stations)));
     }
 
     @Override

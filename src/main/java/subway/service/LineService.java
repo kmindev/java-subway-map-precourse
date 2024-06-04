@@ -2,6 +2,7 @@ package subway.service;
 
 import subway.domain.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class LineService {
@@ -12,7 +13,8 @@ public class LineService {
     private static final String LINE_REGISTER_ERROR = "노선 등록 실패";
     private static final String STATION_NOT_FOUND_ERROR = "해당 역이 존재하지 않습니다.";
 
-    public static void addLine(Line line, Station upStation, Station downStation) {
+
+    public static void addLine(Line line, Station... stations) {
         if (line.getName().length() < LINE_NAME_MIN_SIZE) {
             throw new IllegalArgumentException(LINE_NAME_TOO_SHORT_ERROR);
         }
@@ -23,7 +25,7 @@ public class LineService {
 
         LineRepository.addLine(line);
 
-        initSection(line, downStation, upStation);
+        initSection(line, stations);
     }
 
     public static void deleteLineByName(String deleteLineName) {
@@ -37,15 +39,14 @@ public class LineService {
         return LineRepository.lines();
     }
 
-    private static void initSection(Line line, Station downStation, Station upStation) {
+    private static void initSection(Line line, Station... stations) {
         try {
-            Station findDownStation = StationRepository.findById(downStation)
-                    .orElseThrow(() -> new IllegalArgumentException(LINE_REGISTER_ERROR + " - " + STATION_NOT_FOUND_ERROR));
+            Arrays.stream(stations)
+                    .forEach(station -> StationRepository.findById(station)
+                            .orElseThrow(() -> new IllegalArgumentException(LINE_REGISTER_ERROR + " - " + STATION_NOT_FOUND_ERROR))
+                    );
 
-            Station findUpStation = StationRepository.findById(upStation)
-                    .orElseThrow(() -> new IllegalArgumentException(LINE_REGISTER_ERROR + " - " + STATION_NOT_FOUND_ERROR));
-
-            Section section = Section.of(line, findDownStation, findUpStation);
+            Section section = Section.of(line, stations);
             SectionRepository.initSection(section);
         } catch (Exception e) {
             deleteLineByName(line.getName());
