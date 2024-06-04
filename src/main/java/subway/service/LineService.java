@@ -46,7 +46,7 @@ public class LineService {
                     .orElseThrow(() -> new IllegalArgumentException(LINE_REGISTER_ERROR + " - " + STATION_NOT_FOUND_ERROR));
 
             Section section = Section.of(line, findDownStation, findUpStation);
-            SectionRepository.addSection(section);
+            SectionRepository.initSection(section);
         } catch (Exception e) {
             deleteLineByName(line.getName());
             throw e;
